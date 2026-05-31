@@ -1,0 +1,6 @@
+{
+  "name": "The Dark Box",
+  "description": "Permainan edukasi cilik seru! Tusuk kardus, selesaikan tantangan matematika dan mengeja alfabet Bahasa Indonesia untuk menemukan rahasia di dalam kotak misteri.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
