@@ -1,20 +1,24 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Cardboard Archaeology: Dino Dig
 
-# Run and deploy your AI Studio app
+Game simulasi penggalian purbakala interaktif dengan tema visual kotak kardus yang estetik dan hangat. Pemain akan merobek lapisan kardus misterius, menyalakan senter, menghindari perangkap, memecahkan teka-teki edukatif, dan menyikat fosil dinosaurus kuno untuk dipamerkan di museum pribadi!
 
-This contains everything you need to run your app locally.
+## 🎮 Konsep & Mekanik Dasar
 
-View your app in AI Studio: https://ai.studio/apps/ab47dee2-69c1-4cf3-b671-8fa1d3bc17a6
+Pemain menjelajahi berbagai tingkat kedalaman kotak kardus misterius ("Cardboard Excavation Box") menggunakan alat-alat seru:
 
-## Run Locally
+1. **Tear & Scratch (Robek Kardus)**: Menggosok dan merobek lembaran kardus berlapis-lapis untuk menemukan objek yang tersembunyi di bawahnya.
+2. **Flashlight Mode (Mode Senter)**: Menyinari area gelap dalam kardus untuk menemukan bayangan-bayangan benda purbakala misterius.
+3. **Interactive Brushing (Sikat Fosil)**: Saat fosil ditemukan, pemain masuk ke mode pembersihan interaktif menggunakan kuas di atas kanvas tanah untuk membersihkan debu-debu purba secara presisi.
+4. **Museum Purbakala (Fossil Gallery)**: Mengoleksi 4 bagian utama tulang dinosaurus:
+   - 💀 **Tengkorak (Skull)**
+   - 🦴 **Rusuk (Ribs)**
+   - 🦷 **Tulang Belakang (Spine)**
+   - 🦵 **Tulang Kaki (Leg)**
+   Setelah semua bagian terkumpul lengkap, dinosaurus akan kembali utuh dalam pameran museum yang megah!
 
-**Prerequisites:**  Node.js
+## ⚙️ Fitur Unggulan
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- **Estetika Kotak Kardus 3D**: Antarmuka bertema kardus cokelat daur ulang yang penuh tekstur hangat, bayangan realistis, dan transisi fisik yang memuaskan.
+- **Efek visual Partikel Debu**: Efek semburan debu halus dinamis saat fosil berhasil diangkat dari tanah purba.
+- **Teka-teki Kids Learning**: Pertanyaan interaktif yang ramah anak untuk membuka peti karun atau mengaktifkan tuas rahasia.
+- **Hambatan Dinamis**: Hindari petasan/bom berbahaya yang terkubur di bawah kardus!
