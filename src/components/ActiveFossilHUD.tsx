@@ -19,17 +19,19 @@ export function ActiveFossilHUD({ item, onComplete }: Props) {
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) return;
 
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    const width = canvas.offsetWidth || 320;
+    const height = canvas.offsetHeight || 320;
+    canvas.width = width;
+    canvas.height = height;
 
     // Fill with dirt (darker gray/brown)
     ctx.fillStyle = '#6b5e52'; 
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, width, height);
     
     // Add some noise/texture to make it look like soil
     for (let i = 0; i < 800; i++) {
         ctx.fillStyle = Math.random() > 0.5 ? '#574c42' : '#7c6d60';
-        ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 4 + Math.random() * 4, 4 + Math.random() * 4);
+        ctx.fillRect(Math.random() * width, Math.random() * height, 4 + Math.random() * 4, 4 + Math.random() * 4);
     }
   }, []);
 
@@ -79,27 +81,32 @@ export function ActiveFossilHUD({ item, onComplete }: Props) {
 
   const checkProgress = () => {
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas || canvas.width <= 0 || canvas.height <= 0) return;
     const ctx = canvas.getContext('2d', { willReadFrequently: true });
     if (!ctx) return;
 
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    let transparentPixels = 0;
-    // Sample every 4th pixel for performance
-    for (let i = 3; i < imageData.data.length; i += 16) {
-      if (imageData.data[i] < 128) {
-        transparentPixels++;
+    try {
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      let transparentPixels = 0;
+      // Sample every 4th pixel for performance
+      for (let i = 3; i < imageData.data.length; i += 16) {
+        if (imageData.data[i] < 128) {
+          transparentPixels++;
+        }
       }
-    }
-    const totalSamples = (canvas.width * canvas.height) / 4;
-    const currentProgress = transparentPixels / totalSamples;
-    
-    // Scale progress artificially slightly so they don't have to get 100%
-    const normalized = Math.min(1.0, currentProgress * 1.5);
-    setProgress(normalized);
+      const totalSamples = (canvas.width * canvas.height) / 4;
+      if (totalSamples <= 0) return;
+      const currentProgress = transparentPixels / totalSamples;
+      
+      // Scale progress artificially slightly so they don't have to get 100%
+      const normalized = Math.min(1.0, currentProgress * 1.5);
+      setProgress(normalized);
 
-    if (normalized >= 0.95) {
-      setTimeout(onComplete, 200);
+      if (normalized >= 0.95) {
+        setTimeout(onComplete, 200);
+      }
+    } catch (e) {
+      console.warn("Could not calculate progress yet:", e);
     }
   };
 

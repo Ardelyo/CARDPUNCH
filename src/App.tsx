@@ -416,10 +416,13 @@ export default function App() {
       </AnimatePresence>
 
       {/* Ambient Footer */}
-      <footer className="absolute bottom-6 left-0 right-0 text-center z-40 pointer-events-none px-4">
-         <p className="text-neutral-700 text-xs font-bold tracking-[0.2em] uppercase mix-blend-screen drop-shadow">
+      <footer className="absolute bottom-6 left-0 right-0 text-center z-40 px-4 flex flex-col items-center gap-1">
+         <p className="text-neutral-700 text-xs font-bold tracking-[0.2em] uppercase mix-blend-screen drop-shadow pointer-events-none">
             Tusuk. Sobek. Temukan rahasia di dalam kotak.
          </p>
+         <span className="text-neutral-500/80 text-xs font-semibold tracking-wider hover:text-amber-500/90 transition-colors drop-shadow">
+            made by <a href="https://instagram.com/ardel.yo" target="_blank" rel="noopener noreferrer" className="underline decoration-dotted font-bold">@ardel.yo</a> (Instagram)
+         </span>
       </footer>
     </div>
   );
